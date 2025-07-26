@@ -1,11 +1,11 @@
 ````markdown
-# WeatherApp
+#WeatherApp
 
 A weather tracking application built with ASP.NET Core MVC and styled with custom CSS. Users can select cities, view current weather data, and save or review weather history.
 
 ---
 
-## Features
+##Features
 
 - **City-based Weather Search**
 - **Real-time Temperature, Humidity & Forecast Data**
@@ -16,7 +16,7 @@ A weather tracking application built with ASP.NET Core MVC and styled with custo
 
 ---
 
-## Technologies Used
+##Technologies Used
 
 - ASP.NET Core MVC (.NET 6+)
 - C#
@@ -28,7 +28,7 @@ A weather tracking application built with ASP.NET Core MVC and styled with custo
 
 ---
 
-## Setup Instructions
+##Setup Instructions
 
 1. **Clone the repository**
 
