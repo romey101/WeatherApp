@@ -1,0 +1,14 @@
+@model List<WeatherApp.Models.WeatherResults>
+
+<div class="weather-scroll-container">
+    <div class="weather-scroll-track">
+        @foreach (var result in Model)
+        {
+            <div class="weather-card">
+                <h6>@result.City</h6>
+                <p>@result.TempMax°C / @result.TempMin°C</p>
+                <p>@result.Humidity% Humidity</p>
+            </div>
+        }
+    </div>
+</div>

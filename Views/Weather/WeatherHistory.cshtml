@@ -1,0 +1,52 @@
+
+@model List<WeatherApp.Models.WeatherResults>
+<header class="navbar">
+    <div class="logo">Weather History <i class="fas fa-sun fa-spin-slow"></i></div>
+    <nav>
+        <button class="home-button @(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")" onclick="location.href='/'">Home</button>
+        <button class="home-button" onclick="location.href='#about'">About</button>
+        <button class="home-button @(ViewContext.RouteData.Values["controller"].ToString() == "Account" ? "active" : "")" onclick="location.href='/Account/Login'">Login</button>
+    </nav>
+</header>
+<div class="weather-container">
+    <h2 class="history-title">Saved Weather Results</h2>
+    <form method="get" asp-action="WeatherHistory" class="filter-form mb-4 d-flex justify-content-center align-items-center gap-2 flex-wrap">
+        <input type="text" name="cityFilter" placeholder="Filter by City" class="form-control custom-filter-input" />
+        <button type="submit" class="home-button">Apply Filter</button>
+    </form>
+    <form method="post" asp-action="UpdateWeatherResults" class="history-form">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped history-table">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Temp Min (°C)</th>
+                        <th>Temp Max (°C)</th>
+                        <th>Humidity (%)</th>
+                        <th>Created At</th>
+                        <th>Created By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <input name="[@i].Id" type="hidden" value="@Model[i].Id" />
+                                <input name="[@i].City" value="@Model[i].City" class="form-control rounded-input" />
+                            </td>
+                            <td><input name="[@i].TempMin" value="@Model[i].TempMin" class="form-control rounded-input" /></td>
+                            <td><input name="[@i].TempMax" value="@Model[i].TempMax" class="form-control rounded-input" /></td>
+                            <td><input name="[@i].Humidity" value="@Model[i].Humidity" class="form-control rounded-input" /></td>
+                            <td>@Model[i].CreatedAt.ToString("yyyy-MM-dd")</td>
+                            <td>@Model[i].CreatedBy</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="home-button">Save Changes</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+﻿@model WeatherApp.Models.WeatherResults
+@{
+    ViewData["Title"] = "Home";
+    var condition = ViewBag.WeatherCondition ?? "";
+    var backgroundClass = ViewBag.Background ?? "default";
+}
+<header class="navbar">
+    <div class="logo">Weather Forecast <i class="fas fa-sun fa-spin-slow"></i></div>
+    <nav>
+        <button class="home-button @(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")" onclick="location.href='/'">Home</button>
+        <button class="home-button" onclick="location.href='#about'">About</button>
+        <button class="home-button @(ViewContext.RouteData.Values["controller"].ToString() == "Account" ? "active" : "")" onclick="location.href='/Account/Login'">Login</button>
+    </nav>
+</header>
+<body>
+    <div class="text-center hero-title-block">
+        <h1 class="display-4">Precise <i class="fas fa-sun fa-spin-slow"></i> Weather</h1>
+        <h1 class="display-4">Precisely For You</h1>
+    </div>
+    <section id="about" class="about-section">
+        <div class="row justify-content-center">
+            <div class="col-md-3 feature-box">
+                <i class="fas fa-cloud-sun fa-2x mb-3"></i>
+                <h5>Live Weather</h5>
+                <p>Get real-time weather updates for any Saudi city instantly.</p>
+            </div>
+            <div class="col-md-3 feature-box">
+                <i class="fas fa-map-marker-alt fa-2x mb-3"></i>
+                <h5>Smart Location</h5>
+                <p>Auto-detects your current city to give you instant forecasts.</p>
+            </div>
+            <div class="col-md-3 feature-box">
+                <i class="fas fa-save fa-2x mb-3"></i>
+                <h5>Save Results</h5>
+                <p>Save weather reports to your profile for later viewing.</p>
+            </div>
+        </div>
+        <div class="text-center mt-4 button-row">
+            <button class="home-button" onclick="location.href='/Account/Login'">Let's Start</button>
+        </div>
+    </section>
+</body>

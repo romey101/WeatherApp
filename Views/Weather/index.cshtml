@@ -1,0 +1,61 @@
+@model WeatherApp.Models.WeatherResults
+<header class="navbar">
+    <div class="logo">Weather Search <i class="fas fa-sun fa-spin-slow"></i></div>
+    <nav>
+        <button class="home-button @(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")" onclick="location.href='/'">Home</button>
+        <button class="home-button" onclick="location.href='#about'">About</button>
+        <button class="home-button @(ViewContext.RouteData.Values["controller"].ToString() == "Account" ? "active" : "")" onclick="location.href='/Account/Login'">Login</button>
+    </nav>
+</header>
+<div class="index_weather-container">
+    <form method="post" asp-action="GetWeather" class="weather-form">
+        <label for="citySelect" class="form-label">Select City</label>
+        <div class="form-inline-group">
+            <select id="citySelect" name="city" class="select-city rounded-select">
+                <option value="" disabled selected hidden>Select City</option>
+                @foreach (var city in (List<string>)ViewBag.Cities)
+                {
+                    <option value="@city">@city</option>
+                }
+            </select>
+            <button type="submit" class="home-button">Get Weather</button>
+        </div>
+    </form>
+    @if (Model != null)
+    {
+        <div class="weather-results mt-4 table-responsive">
+            <table class="table table-bordered table-striped history-table">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>Temp Min (°C)</th>
+                        <th>Temp Max (°C)</th>
+                        <th>Humidity (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model?.City</td>
+                        <td>@Model?.TempMin</td>
+                        <td>@Model?.TempMax</td>
+                        <td>@Model?.Humidity</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-inline-group mt-3">
+                <form method="post" asp-action="SaveWeatherResult" class="m-0">
+                    <input type="hidden" name="City" value="@Model.City" />
+                    <input type="hidden" name="TempMin" value="@Model.TempMin" />
+                    <input type="hidden" name="TempMax" value="@Model.TempMax" />
+                    <input type="hidden" name="Humidity" value="@Model.Humidity" />
+                    <button type="submit" class="home-button">Save Result</button>
+                </form>
+                <button type="button" class="home-button" onclick="location.href='/Weather/WeatherHistory'">Show Weather History</button>
+            </div>
+        </div>
+    }
+    @if (ViewBag.Error != null)
+    {
+        <p class="text-danger mt-3">@ViewBag.Error</p>
+    }
+</div>
