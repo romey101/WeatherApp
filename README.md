@@ -1,11 +1,10 @@
-````markdown
-#WeatherApp
+# WeatherApp
 
 A weather tracking application built with ASP.NET Core MVC and styled with custom CSS. Users can select cities, view current weather data, and save or review weather history.
 
 ---
 
-##Features
+## Features
 
 - **City-based Weather Search**
 - **Real-time Temperature, Humidity & Forecast Data**
@@ -16,11 +15,12 @@ A weather tracking application built with ASP.NET Core MVC and styled with custo
 
 ---
 
-##Technologies Used
+## Technologies Used
 
 - ASP.NET Core MVC (.NET 6+)
 - C#
 - Entity Framework Core
+- SQL Server (LocalDB or Express)
 - Razor Pages
 - Custom CSS (Glassmorphism + Animations)
 - HTML5
@@ -28,23 +28,23 @@ A weather tracking application built with ASP.NET Core MVC and styled with custo
 
 ---
 
-##Setup Instructions
+## Setup Instructions
 
 1. **Clone the repository**
 
 ```bash
 git clone https://github.com/romey101/WeatherApp.git
 cd WeatherApp
-````
+```
 
 2. **Open the solution**
 
-* For **Visual Studio**: Open the `WeatherApp.sln` file
-* For **VS Code**: Open the entire project folder
+- For **Visual Studio**: Open the `WeatherApp.sln` file  
+- For **VS Code**: Open the entire project folder
 
 3. **Set up the database**
 
-> This app uses **Entity Framework Core**. Run the following command to apply migrations and create the database:
+This app uses **Entity Framework Core** with **SQL Server**. Run the following command to apply migrations and create the database:
 
 ```bash
 dotnet ef database update
@@ -56,28 +56,23 @@ dotnet ef database update
 dotnet run
 ```
 
-> Then open your browser and visit:
-> `http://localhost:5249/Weather`
+Then open your browser and visit:  
+`http://localhost:5249/Weather`
 
 ---
 
 ## Screenshots
 
-
-### Weather Home Page
-
+### Weather Home Page  
 ![Weather Home](screenshots/weather_home.png)
 
-### Weather Login Page
-
+### Weather Login Page  
 ![Weather Login](screenshots/weather_login.png)
 
-### Weather Search Page
-
+### Weather Search Page  
 ![Weather Search](screenshots/weather_search.png)
 
-### Weather History Page
-
+### Weather History Page  
 ![Weather History](screenshots/weather_history.png)
 
 ---
@@ -101,16 +96,8 @@ WeatherApp/
 
 ---
 
-
-
 ## Author
 
-**Maram Alshammary**
-[1romey101@gmail.com](mailto:1romey101@gmail.com)
+**Maram Alshammary**  
+[1romey101@gmail.com](mailto:1romey101@gmail.com)  
 [GitHub Profile](https://github.com/romey101)
-
-```
-
----
-
-```
